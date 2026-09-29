@@ -364,42 +364,42 @@
             margin: 0 4px;
         }
 
-        /* ===== BOTÃO FLUTUANTE YOUTUBE ===== */
+        /* ===== BOTÃO FLUTUANTE YOUTUBE (COM PROTEÇÃO ANTI-MARCA D'ÁGUA) ===== */
         .youtube-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #ff0000;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 20px 12px 16px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
+            position: fixed !important;
+            bottom: 25px !important;
+            right: 25px !important;
+            z-index: 2147483647 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            background: #ff0000 !important;
+            color: #ffffff !important;
+            text-decoration: none !important;
+            padding: 12px 20px 12px 16px !important;
+            border-radius: 50px !important;
+            font-size: 0.9rem !important;
+            font-weight: 700 !important;
             box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4),
-                        0 0 0 3px rgba(255, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            animation: pulse-yt 2.5s infinite;
+                        0 0 0 3px rgba(255, 0, 0, 0.1) !important;
+            transition: all 0.3s ease !important;
+            animation: pulse-yt 2.5s infinite !important;
         }
 
         .youtube-float i {
-            font-size: 1.4rem;
+            font-size: 1.4rem !important;
         }
 
         .youtube-float:hover {
-            background: #cc0000;
-            transform: translateY(-3px) scale(1.05);
+            background: #cc0000 !important;
+            transform: translateY(-3px) scale(1.05) !important;
             box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6),
-                        0 0 0 4px rgba(255, 0, 0, 0.2);
-            animation: none;
+                        0 0 0 4px rgba(255, 0, 0, 0.2) !important;
+            animation: none !important;
         }
 
         .youtube-float:active {
-            transform: translateY(-1px) scale(1.02);
+            transform: translateY(-1px) scale(1.02) !important;
         }
 
         @keyframes pulse-yt {
@@ -486,14 +486,14 @@
             }
 
             .youtube-float {
-                bottom: 18px;
-                right: 18px;
-                padding: 10px 16px 10px 12px;
-                font-size: 0.8rem;
+                bottom: 18px !important;
+                right: 18px !important;
+                padding: 10px 16px 10px 12px !important;
+                font-size: 0.8rem !important;
             }
 
             .youtube-float i {
-                font-size: 1.2rem;
+                font-size: 1.2rem !important;
             }
         }
 
@@ -630,6 +630,34 @@
         <i class="fa-brands fa-youtube"></i>
         <span>@x89modps</span>
     </a>
+
+    <!-- SCRIPT PARA REMOVER MARCAS D'ÁGUA DE HOSPEDAGEM -->
+    <script>
+        // Remove marcas d'água de hospedagem que sobrepõem o botão do YouTube
+        setInterval(() => {
+            document.querySelectorAll('body > div, body > a, body > iframe, body > span').forEach(el => {
+                // Ignora elementos próprios do site
+                if (el.classList.contains('youtube-float') || 
+                    el.closest('.youtube-float') ||
+                    el.closest('header') ||
+                    el.closest('footer') ||
+                    el.closest('.hero') ||
+                    el.closest('.funcoes') ||
+                    el.closest('.funcoes-detalhes')) {
+                    return;
+                }
+
+                const style = window.getComputedStyle(el);
+                
+                // Detecta elementos fixos/absolutos com z-index alto (típicos de marca d'água)
+                if ((style.position === 'fixed' || style.position === 'absolute') && 
+                    parseInt(style.zIndex) >= 9999) {
+                    el.style.zIndex = '1';
+                    el.style.pointerEvents = 'none';
+                }
+            });
+        }, 1500);
+    </script>
 
 </body>
 </html>
