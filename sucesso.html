@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Liberado - X89MODPS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #1a1a1a; }
+        .loading-spinner {
+            border: 3px solid rgba(212, 160, 23, 0.2);
+            border-top: 3px solid #d4a017;
+            border-radius: 50%; width: 40px; height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .fade-in { animation: fadeIn 0.6s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <!-- TELA DE VERIFICAÇÃO (Aparece primeiro) -->
+    <div id="loadingScreen" class="text-center">
+        <div class="loading-spinner mx-auto mb-4"></div>
+        <h2 class="text-xl font-bold text-white mb-2">Verificando pagamento...</h2>
+        <p class="text-gray-400 text-sm">Aguarde enquanto confirmamos sua transação.</p>
+    </div>
+
+    <!-- CONTEÚDO DE SUCESSO (Oculto até a verificação) -->
+    <div id="successContent" class="hidden bg-[#111111] border border-[#333] rounded-xl shadow-2xl w-full max-w-lg p-8 text-center relative overflow-hidden fade-in">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-600 via-green-400 to-green-600"></div>
+        
+        <div class="w-20 h-20 bg-green-500/10 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i class="fa-solid fa-check text-4xl text-green-500"></i>
+        </div>
+
+        <h1 class="text-3xl font-bold text-white mb-2">Pagamento Confirmado!</h1>
+        <p class="text-gray-400 mb-8">Seu acesso ao <span class="text-[#d4a017] font-bold">MOD PS MK GHOST FANTASMA</span> foi liberado com sucesso.</p>
+
+        <div class="bg-[#1a1a1a] border border-[#333] rounded-lg p-6 mb-6">
+            <h3 class="text-lg font-semibold text-white mb-4 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-download text-[#d4a017]"></i> Área de Download
+            </h3>
+            <p class="text-sm text-gray-400 mb-4">Clique no botão abaixo para iniciar o download do seu arquivo.</p>
+            
+            <!-- BOTÃO DE DOWNLOAD PROTEGIDO -->
+            <button onclick="iniciarDownloadSeguro()" id="btnDownload" class="w-full bg-gradient-to-r from-[#b8860b] to-[#8b6508] hover:from-[#d4a017] hover:to-[#b8860b] text-white font-bold py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#b8860b]/20">
+                <i class="fa-solid fa-cloud-arrow-down text-xl"></i>
+                <span>BAIXAR ARQUIVO AGORA</span>
+            </button>
+            <p class="text-xs text-gray-500 mt-3 flex items-center justify-center gap-1">
+                <i class="fa-solid fa-shield-halved"></i> Download seguro e verificado
+            </p>
+        </div>
+
+        <a href="index.html" class="text-sm text-gray-500 hover:text-[#d4a017] transition flex items-center justify-center gap-2">
+            <i class="fa-solid fa-house"></i> Voltar para a página inicial
+        </a>
+    </div>
+
+    <script>
+        const WORKER_URL = 'https://royal-poetry-ea15rjrjrrrjrhrhrhe.adegaoliveira92.workers.dev';
+        
+        // Link original do MediaFire já codificado em Base64 para proteção
+        const LINK_DOWNLOAD_CODIFICADO = 'aHR0cHM6Ly93d3cubWVkaWFmaXJlLmNvbS9maWxlL3FscThqdjEyYmdrenI0dC9hcGsuYXBrL2ZpbGU='; 
+
+        // 1. VERIFICAÇÃO DE SEGURANÇA AO CARREGAR A PÁGINA
+        window.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const txid = urlParams.get('txid');
+
+            // Se não tiver txid na URL, redireciona para o início imediatamente
+            if (!txid) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                // Consulta o Worker para ver se ESTE txid específico foi pago
+                const response = await fetch(WORKER_URL + '/verificar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ transactionId: txid })
+                });
+                
+                const data = await response.json();
+
+                // SÓ libera o conteúdo se o status for COMPLETO
+                if (data.status === 'COMPLETO') {
+                    document.getElementById('loadingScreen').classList.add('hidden');
+                    document.getElementById('successContent').classList.remove('hidden');
+                } else {
+                    // Se estiver pendente, falhou ou expirado, redireciona para fora
+                    window.location.href = 'index.html';
+                }
+            } catch (error) {
+                // Em caso de erro de rede, por segurança, redireciona
+                window.location.href = 'index.html';
+            }
+        });
+
+        // 2. FUNÇÃO DE DOWNLOAD PROTEGIDA
+        function iniciarDownloadSeguro() {
+            // Proteção básica contra bots de automação (Selenium, Puppeteer, etc)
+            if (navigator.webdriver) {
+                alert('Ação não permitida por motivos de segurança.');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                // Decodifica o link Base64 apenas no momento do clique
+                const linkReal = atob(LINK_DOWNLOAD_CODIFICADO);
+                
+                // Cria um elemento de link invisível e força o clique
+                const a = document.createElement('a');
+                a.href = linkReal;
+                a.setAttribute('download', ''); 
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                // Feedback visual no botão
+                const btn = document.getElementById('btnDownload');
+                btn.innerHTML = '<i class="fa-solid fa-check text-xl"></i> <span>DOWNLOAD INICIADO</span>';
+                btn.classList.remove('from-[#b8860b]', 'to-[#8b6508]');
+                btn.classList.add('from-green-600', 'to-green-700');
+                
+            } catch (e) {
+                console.error('Erro ao processar download:', e);
+                alert('Erro ao iniciar o download. Contate o suporte.');
+            }
+        }
+    </script>
+</body>
+</html>

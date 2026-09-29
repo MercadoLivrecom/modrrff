@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X89MODPS</title>
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        /* ===== CABEÇALHO ===== */
+        header {
+            background-color: #111111;
+            padding: 14px 30px;
+            border-bottom: 2px solid #b8860b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 6px rgba(212, 160, 23, 0.4));
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #d4a017;
+            text-shadow: 0 0 8px rgba(212, 160, 23, 0.4);
+        }
+
+        .logo span {
+            color: #e63946;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .header-right i {
+            color: #d4a017;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 50px 30px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(230, 57, 70, 0.1);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            color: #e63946;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 14px;
+            color: #ffffff;
+        }
+
+        .hero h1 .destaque-vermelho {
+            color: #e63946;
+            text-shadow: 0 0 8px rgba(230, 57, 70, 0.4);
+        }
+
+        .hero h1 .destaque-dourado {
+            color: #d4a017;
+        }
+
+        .hero-subtitle {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.15rem;
+            margin-bottom: 28px;
+            color: #cccccc;
+            flex-wrap: wrap;
+        }
+
+        .hero-subtitle .preco {
+            color: #e63946;
+            font-weight: 900;
+            font-size: 1.6rem;
+            text-shadow: 0 0 6px rgba(230, 57, 70, 0.4);
+        }
+
+        .hero-subtitle i {
+            color: #d4a017;
+        }
+
+        /* ===== BOTÃO ===== */
+        .btn-comprar {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 36px;
+            background: linear-gradient(145deg, #b8860b, #8b6508);
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.4);
+        }
+
+        .btn-comprar:hover {
+            background: linear-gradient(145deg, #d4a017, #b8860b);
+            box-shadow: 0 6px 25px rgba(212, 160, 23, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-comprar:active {
+            transform: translateY(0);
+        }
+
+        .btn-comprar i {
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-comprar:hover i {
+            transform: translateX(3px);
+        }
+
+        /* ===== SEÇÃO DE FUNÇÕES DO MOD (IMAGEM) ===== */
+        .funcoes {
+            padding: 40px 30px 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .funcoes-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-left: 4px;
+        }
+
+        .funcoes-header i {
+            color: #e63946;
+            font-size: 1.1rem;
+        }
+
+        .funcoes-header h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #d4a017;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .funcoes-divider {
+            height: 2px;
+            background: linear-gradient(90deg, #b8860b, transparent);
+            margin-bottom: 24px;
+            border-radius: 2px;
+        }
+
+        .funcoes-img-wrapper {
+            position: relative;
+            border: 2px solid #b8860b;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6),
+                        0 0 20px rgba(184, 134, 11, 0.15);
+            transition: transform 0.3s ease;
+            background: #111;
+        }
+
+        .funcoes-img-wrapper:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7),
+                        0 0 30px rgba(184, 134, 11, 0.25);
+        }
+
+        .funcoes-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== SEÇÃO DE FUNÇÕES DETALHADAS ===== */
+        .funcoes-detalhes {
+            padding: 50px 30px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .funcoes-detalhes-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-left: 4px;
+        }
+
+        .funcoes-detalhes-header i {
+            color: #e63946;
+            font-size: 1.1rem;
+        }
+
+        .funcoes-detalhes-header h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #d4a017;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .funcoes-detalhes-subtitle {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            padding-left: 4px;
+        }
+
+        .funcoes-detalhes-divider {
+            height: 2px;
+            background: linear-gradient(90deg, #b8860b, transparent);
+            margin-bottom: 28px;
+            border-radius: 2px;
+        }
+
+        .funcao-card {
+            display: flex;
+            gap: 18px;
+            background: linear-gradient(145deg, #222222, #1a1a1a);
+            border: 1px solid #333;
+            border-left: 3px solid #b8860b;
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .funcao-card:hover {
+            border-color: #d4a017;
+            border-left-color: #e63946;
+            transform: translateX(4px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .funcao-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            background: rgba(230, 57, 70, 0.1);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .funcao-icon i {
+            color: #e63946;
+            font-size: 1.4rem;
+        }
+
+        .funcao-content h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #d4a017;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .funcao-content h3 .badge {
+            font-size: 0.65rem;
+            background: rgba(230, 57, 70, 0.15);
+            color: #e63946;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .funcao-content p {
+            font-size: 0.9rem;
+            color: #bbb;
+            line-height: 1.6;
+        }
+
+        .funcao-content p strong {
+            color: #ffffff;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #111111;
+            border-top: 1px solid #2a2a2a;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        footer i {
+            color: #e63946;
+            margin: 0 4px;
+        }
+
+        /* ===== BOTÃO FLUTUANTE YOUTUBE ===== */
+        .youtube-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ff0000;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 20px 12px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4),
+                        0 0 0 3px rgba(255, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: pulse-yt 2.5s infinite;
+        }
+
+        .youtube-float i {
+            font-size: 1.4rem;
+        }
+
+        .youtube-float:hover {
+            background: #cc0000;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6),
+                        0 0 0 4px rgba(255, 0, 0, 0.2);
+            animation: none;
+        }
+
+        .youtube-float:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        @keyframes pulse-yt {
+            0%, 100% {
+                box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4),
+                            0 0 0 3px rgba(255, 0, 0, 0.1);
+            }
+            50% {
+                box-shadow: 0 6px 25px rgba(255, 0, 0, 0.6),
+                            0 0 0 8px rgba(255, 0, 0, 0);
+            }
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 18px;
+            }
+
+            .header-img {
+                height: 34px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+                letter-spacing: 1.5px;
+            }
+
+            .header-right {
+                display: none;
+            }
+
+            .hero {
+                padding: 30px 18px 28px;
+            }
+
+            .hero h1 {
+                font-size: 1.55rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-subtitle .preco {
+                font-size: 1.3rem;
+            }
+
+            .btn-comprar {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 20px;
+                font-size: 0.95rem;
+            }
+
+            .funcoes,
+            .funcoes-detalhes {
+                padding: 30px 18px 30px;
+            }
+
+            .funcoes-header h2,
+            .funcoes-detalhes-header h2 {
+                font-size: 1rem;
+            }
+
+            .funcao-card {
+                flex-direction: column;
+                gap: 14px;
+                padding: 18px;
+            }
+
+            .funcao-icon {
+                width: 46px;
+                height: 46px;
+            }
+
+            .funcao-content h3 {
+                font-size: 0.95rem;
+                flex-wrap: wrap;
+            }
+
+            .funcao-content p {
+                font-size: 0.85rem;
+            }
+
+            .youtube-float {
+                bottom: 18px;
+                right: 18px;
+                padding: 10px 16px 10px 12px;
+                font-size: 0.8rem;
+            }
+
+            .youtube-float i {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="header-left">
+            <img src="favecom.webp" alt="Favecom" class="header-img">
+            <div class="logo">X89<span>MOD</span>PS</div>
+        </div>
+        <div class="header-right">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Pagamento Seguro</span>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-tag">
+            <i class="fa-solid fa-bolt"></i>
+            Oferta Especial
+        </div>
+
+        <h1>
+            Compre já o seu <span class="destaque-vermelho">acesso permanente</span><br>
+            do <span class="destaque-dourado">MOD PS MK GHOST FANTASMA</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            <i class="fa-solid fa-tag"></i>
+            O valor único de <span class="preco">R$ 5</span>
+        </p>
+
+        <a href="carrinho.html" class="btn-comprar">
+            <i class="fa-solid fa-cart-shopping"></i>
+            Clique aqui para comprar
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </section>
+
+    <!-- FUNÇÕES DO MOD (IMAGEM) -->
+    <section class="funcoes">
+        <div class="funcoes-header">
+            <i class="fa-solid fa-gamepad"></i>
+            <h2>Exemplo das funções do MOD</h2>
+        </div>
+        <div class="funcoes-divider"></div>
+
+        <div class="funcoes-img-wrapper">
+            <img src="fd.png" alt="Funções do MOD" class="funcoes-img">
+        </div>
+    </section>
+
+    <!-- FUNÇÕES DETALHADAS -->
+    <section class="funcoes-detalhes">
+        <div class="funcoes-detalhes-header">
+            <i class="fa-solid fa-list-check"></i>
+            <h2>Conheça as principais funções</h2>
+        </div>
+        <p class="funcoes-detalhes-subtitle">Recursos exclusivos que vão dominar suas partidas</p>
+        <div class="funcoes-detalhes-divider"></div>
+
+        <!-- TELETRANSPORTE -->
+        <div class="funcao-card">
+            <div class="funcao-icon">
+                <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="funcao-content">
+                <h3>
+                    Teletransporte
+                    <span class="badge">Ativo</span>
+                </h3>
+                <p>
+                    Ativando a função, uma pessoa consegue <strong>teletransportar para cima de uma casa</strong> ou para <strong>trás de um inimigo</strong>, garantindo vantagem estratégica em qualquer situação.
+                </p>
+            </div>
+        </div>
+
+        <!-- MODO CONGELA -->
+        <div class="funcao-card">
+            <div class="funcao-icon">
+                <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <div class="funcao-content">
+                <h3>
+                    Abater Inimigos
+                    <span class="badge">Modo Congela</span>
+                </h3>
+                <p>
+                    Ative o modo e atire no inimigo — ele vai ficar <strong>completamente congelado</strong>. Ao desativar o modo, o inimigo é <strong>abatido automaticamente</strong>.
+                </p>
+            </div>
+        </div>
+
+        <!-- MODO GHOST -->
+        <div class="funcao-card">
+            <div class="funcao-icon">
+                <i class="fa-solid fa-ghost"></i>
+            </div>
+            <div class="funcao-content">
+                <h3>
+                    Modo Ghost Hack
+                    <span class="badge">Invisível</span>
+                </h3>
+                <p>
+                    Você fica <strong>invisível para amigos e inimigos</strong>. Esconda seu personagem atrás de algum objeto, ative o modo e ataque com visibilidade total — o inimigo <strong>não vai te ver</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            <i class="fa-solid fa-lock"></i>
+            X89MODPS &copy; 2026 — Todos os direitos reservados
+        </p>
+    </footer>
+
+    <!-- BOTÃO FLUTUANTE YOUTUBE -->
+    <a href="https://www.youtube.com/@x89modps" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="youtube-float" 
+       aria-label="Visitar canal no YouTube">
+        <i class="fa-brands fa-youtube"></i>
+        <span>@x89modps</span>
+    </a>
+
+</body>
+</html>
