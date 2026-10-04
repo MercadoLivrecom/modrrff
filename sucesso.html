@@ -6,9 +6,10 @@
     <title>Acesso Liberado - X89MODPS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #1a1a1a; }
+        
         .loading-spinner {
             border: 3px solid rgba(212, 160, 23, 0.2);
             border-top: 3px solid #d4a017;
@@ -16,70 +17,143 @@
             animation: spin 1s linear infinite;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .fade-in { animation: fadeIn 0.6s ease-in-out; }
+        
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== BOTÃO FLUTUANTE YOUTUBE ===== */
+        .youtube-float {
+            position: fixed !important;
+            bottom: 25px !important;
+            right: 25px !important;
+            z-index: 2147483647 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            background: #ff0000 !important;
+            color: #ffffff !important;
+            text-decoration: none !important;
+            padding: 16px 28px 16px 22px !important;
+            border-radius: 50px !important;
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4), 0 0 0 3px rgba(255, 0, 0, 0.1) !important;
+            transition: all 0.3s ease !important;
+            animation: pulse-yt 2.5s infinite !important;
+        }
+        .youtube-float i { font-size: 1.6rem !important; }
+        .youtube-float:hover {
+            background: #cc0000 !important;
+            transform: translateY(-3px) scale(1.05) !important;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.6), 0 0 0 4px rgba(255, 0, 0, 0.2) !important;
+            animation: none !important;
+        }
+        @keyframes pulse-yt {
+            0%, 100% { box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4), 0 0 0 3px rgba(255, 0, 0, 0.1); }
+            50% { box-shadow: 0 6px 25px rgba(255, 0, 0, 0.6), 0 0 0 8px rgba(255, 0, 0, 0); }
+        }
+        @media (max-width: 768px) {
+            .youtube-float {
+                bottom: 18px !important; right: 18px !important;
+                padding: 14px 24px 14px 18px !important; font-size: 0.9rem !important;
+            }
+            .youtube-float i { font-size: 1.4rem !important; }
+        }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen flex flex-col items-center justify-center p-4 bg-[#0f0f0f]">
 
     <!-- TELA DE VERIFICAÇÃO (Aparece primeiro) -->
-    <div id="loadingScreen" class="text-center">
+    <div id="loadingScreen" class="text-center fade-in">
         <div class="loading-spinner mx-auto mb-4"></div>
         <h2 class="text-xl font-bold text-white mb-2">Verificando pagamento...</h2>
-        <p class="text-gray-400 text-sm">Aguarde enquanto confirmamos sua transação.</p>
+        <p class="text-gray-400 text-sm">Aguarde enquanto confirmamos sua transação com segurança.</p>
     </div>
 
     <!-- CONTEÚDO DE SUCESSO (Oculto até a verificação) -->
-    <div id="successContent" class="hidden bg-[#111111] border border-[#333] rounded-xl shadow-2xl w-full max-w-lg p-8 text-center relative overflow-hidden fade-in">
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-600 via-green-400 to-green-600"></div>
+    <div id="successContent" class="hidden bg-[#111111] border border-[#333] rounded-2xl shadow-2xl w-full max-w-lg relative overflow-hidden fade-in">
+        <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-green-600 via-green-400 to-green-600"></div>
         
-        <div class="w-20 h-20 bg-green-500/10 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
-            <i class="fa-solid fa-check text-4xl text-green-500"></i>
-        </div>
+        <div class="p-6 md:p-8 text-center">
+            <div class="w-20 h-20 bg-green-500/10 border border-green-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fa-solid fa-check text-4xl text-green-500"></i>
+            </div>
 
-        <h1 class="text-3xl font-bold text-white mb-2">Pagamento Confirmado!</h1>
-        <p class="text-gray-400 mb-8">Seu acesso ao <span class="text-[#d4a017] font-bold">MOD PS MK GHOST FANTASMA</span> foi liberado com sucesso.</p>
+            <h1 class="text-2xl md:text-3xl font-bold text-white mb-2">Pagamento Confirmado!</h1>
+            <p class="text-gray-400 mb-6">Seu acesso ao <span class="text-[#d4a017] font-bold">MOD X89MODPS</span> foi liberado com sucesso.</p>
 
-        <div class="bg-[#1a1a1a] border border-[#333] rounded-lg p-6 mb-6">
-            <h3 class="text-lg font-semibold text-white mb-4 flex items-center justify-center gap-2">
-                <i class="fa-solid fa-download text-[#d4a017]"></i> Área de Download
-            </h3>
-            <p class="text-sm text-gray-400 mb-4">Clique no botão abaixo para iniciar o download do seu arquivo.</p>
-            
+            <!-- INSTRUÇÕES DE USO -->
+            <div class="bg-[#1a1a1a] border border-[#333] rounded-xl p-5 mb-6 text-left">
+                <h3 class="text-sm font-bold text-[#d4a017] mb-4 flex items-center gap-2 uppercase tracking-wide">
+                    <i class="fa-solid fa-list-ol"></i> Instruções de Instalação e Uso
+                </h3>
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <span class="bg-[#d4a017]/10 text-[#d4a017] font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">1</span>
+                        <span>Ao abrir o aplicativo, <strong class="text-white">conceda todas as permissões</strong> solicitadas pelo sistema.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-[#d4a017]/10 text-[#d4a017] font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">2</span>
+                        <span>Ative a VPN e, em seguida, <strong class="text-white">desative-a</strong> imediatamente.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-[#d4a017]/10 text-[#d4a017] font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">3</span>
+                        <span>Abra o jogo e entre na conta com a VPN <strong class="text-white">desativada</strong>.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-[#d4a017]/10 text-[#d4a017] font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">4</span>
+                        <span>Ao entrar na partida, <strong class="text-white">ative a VPN</strong> e o modo <strong class="text-[#e63946]">Congelar</strong>.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="bg-[#d4a017]/10 text-[#d4a017] font-bold rounded-full w-5 h-5 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">5</span>
+                        <span>Ao terminar a partida, <strong class="text-white">desative a VPN</strong> antes de voltar ao lobby.</span>
+                    </li>
+                </ul>
+                
+                <div class="mt-4 pt-3 border-t border-[#333] flex items-center gap-2 text-xs text-gray-400">
+                    <i class="fa-solid fa-mobile-screen text-[#d4a017]"></i>
+                    <span>Recomendação: Utilize o <strong class="text-white">Free Fire Max</strong> para melhor desempenho e estabilidade.</span>
+                </div>
+            </div>
+
             <!-- BOTÃO DE DOWNLOAD PROTEGIDO -->
-            <button onclick="iniciarDownloadSeguro()" id="btnDownload" class="w-full bg-gradient-to-r from-[#b8860b] to-[#8b6508] hover:from-[#d4a017] hover:to-[#b8860b] text-white font-bold py-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#b8860b]/20">
-                <i class="fa-solid fa-cloud-arrow-down text-xl"></i>
+            <button onclick="iniciarDownloadSeguro()" id="btnDownload" class="w-full bg-gradient-to-r from-[#b8860b] to-[#8b6508] hover:from-[#d4a017] hover:to-[#b8860b] text-white font-bold py-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-[#b8860b]/20 group">
+                <i class="fa-solid fa-cloud-arrow-down text-xl group-hover:animate-bounce"></i>
                 <span>BAIXAR ARQUIVO AGORA</span>
             </button>
             <p class="text-xs text-gray-500 mt-3 flex items-center justify-center gap-1">
                 <i class="fa-solid fa-shield-halved"></i> Download seguro e verificado
             </p>
-        </div>
 
-        <a href="index.html" class="text-sm text-gray-500 hover:text-[#d4a017] transition flex items-center justify-center gap-2">
-            <i class="fa-solid fa-house"></i> Voltar para a página inicial
-        </a>
+            <a href="index.html" class="inline-flex items-center justify-center gap-2 text-sm text-gray-500 hover:text-[#d4a017] transition mt-6 font-medium">
+                <i class="fa-solid fa-house"></i> Voltar para a página inicial
+            </a>
+        </div>
     </div>
+
+    <!-- BOTÃO FLUTUANTE YOUTUBE -->
+    <a href="https://www.youtube.com/@x89modps" target="_blank" rel="noopener noreferrer" class="youtube-float" aria-label="Visitar canal no YouTube">
+        <i class="fa-brands fa-youtube"></i>
+        <span>@x89modps</span>
+    </a>
 
     <script>
         const WORKER_URL = 'https://royal-poetry-ea15rjrjrrrjrhrhrhe.adegaoliveira92.workers.dev';
         
-        // Link original do MediaFire já codificado em Base64 para proteção
-        const LINK_DOWNLOAD_CODIFICADO = 'aHR0cHM6Ly93d3cubWVkaWFmaXJlLmNvbS9maWxlL3FscThqdjEyYmdrenI0dC9hcGsuYXBrL2ZpbGU='; 
+        // Link do MediaFire codificado em Base64 para proteção contra raspagem direta
+        const LINK_DOWNLOAD_CODIFICADO = 'aHR0cHM6Ly93d3cubWVkaWFmaXJlLmNvbS9maWxlL3YydjIzY25wa3Q5eHd1aS9YODltb2Rwcy1kb2lzLWljb25lcy1mbHV0dWFudGVzLmFway9maWxl'; 
 
         // 1. VERIFICAÇÃO DE SEGURANÇA AO CARREGAR A PÁGINA
         window.addEventListener('DOMContentLoaded', async () => {
             const urlParams = new URLSearchParams(window.location.search);
             const txid = urlParams.get('txid');
 
-            // Se não tiver txid na URL, redireciona para o início imediatamente
             if (!txid) {
                 window.location.href = 'index.html';
                 return;
             }
 
             try {
-                // Consulta o Worker para ver se ESTE txid específico foi pago
                 const response = await fetch(WORKER_URL + '/verificar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -88,23 +162,19 @@
                 
                 const data = await response.json();
 
-                // SÓ libera o conteúdo se o status for COMPLETO
                 if (data.status === 'COMPLETO') {
                     document.getElementById('loadingScreen').classList.add('hidden');
                     document.getElementById('successContent').classList.remove('hidden');
                 } else {
-                    // Se estiver pendente, falhou ou expirado, redireciona para fora
                     window.location.href = 'index.html';
                 }
             } catch (error) {
-                // Em caso de erro de rede, por segurança, redireciona
                 window.location.href = 'index.html';
             }
         });
 
         // 2. FUNÇÃO DE DOWNLOAD PROTEGIDA
         function iniciarDownloadSeguro() {
-            // Proteção básica contra bots de automação (Selenium, Puppeteer, etc)
             if (navigator.webdriver) {
                 alert('Ação não permitida por motivos de segurança.');
                 window.location.href = 'index.html';
@@ -112,10 +182,8 @@
             }
 
             try {
-                // Decodifica o link Base64 apenas no momento do clique
                 const linkReal = atob(LINK_DOWNLOAD_CODIFICADO);
                 
-                // Cria um elemento de link invisível e força o clique
                 const a = document.createElement('a');
                 a.href = linkReal;
                 a.setAttribute('download', ''); 
@@ -124,7 +192,6 @@
                 a.click();
                 document.body.removeChild(a);
 
-                // Feedback visual no botão
                 const btn = document.getElementById('btnDownload');
                 btn.innerHTML = '<i class="fa-solid fa-check text-xl"></i> <span>DOWNLOAD INICIADO</span>';
                 btn.classList.remove('from-[#b8860b]', 'to-[#8b6508]');
@@ -135,6 +202,25 @@
                 alert('Erro ao iniciar o download. Contate o suporte.');
             }
         }
+
+        // 3. SCRIPT PARA REMOVER MARCAS D'ÁGUA DE HOSPEDAGEM
+        setInterval(() => {
+            document.querySelectorAll('body > div, body > a, body > iframe, body > span').forEach(el => {
+                if (el.classList.contains('youtube-float') || 
+                    el.closest('.youtube-float') ||
+                    el.tagName.toLowerCase() === 'script' ||
+                    el.tagName.toLowerCase() === 'style') {
+                    return;
+                }
+
+                const style = window.getComputedStyle(el);
+                if ((style.position === 'fixed' || style.position === 'absolute') && parseInt(style.zIndex) >= 9999) {
+                    el.style.zIndex = '1';
+                    el.style.pointerEvents = 'none';
+                    el.style.opacity = '0';
+                }
+            });
+        }, 1500);
     </script>
 </body>
 </html>

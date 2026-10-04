@@ -53,6 +53,27 @@
             gap: 14px;
         }
 
+        .header-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 8px;
+            color: #25D366;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .header-whatsapp:hover {
+            background: rgba(37, 211, 102, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 0 12px rgba(37, 211, 102, 0.3);
+        }
+
         .header-img {
             height: 42px;
             width: auto;
@@ -124,25 +145,117 @@
             color: #d4a017;
         }
 
-        .hero-subtitle {
+        .hero-compatibility {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.15rem;
-            margin-bottom: 28px;
+            gap: 10px;
+            font-size: 0.95rem;
             color: #cccccc;
+            margin-bottom: 8px;
             flex-wrap: wrap;
         }
 
-        .hero-subtitle .preco {
+        .hero-compatibility i {
+            color: #d4a017;
+        }
+
+        .badge-recomendado {
+            background: rgba(212, 160, 23, 0.15);
+            color: #d4a017;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid rgba(212, 160, 23, 0.3);
+        }
+
+        .hero-safe {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #2ecc71;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-safe i {
+            font-size: 1rem;
+        }
+
+        /* ===== PREÇO E DESCONTO ===== */
+        .hero-subtitle {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .preco-antigo {
+            color: #888;
+            font-size: 1.1rem;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .desconto-badge {
+            background: #2ecc71;
+            color: #111;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .preco-atual-wrapper {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+        }
+
+        .preco-atual-wrapper i {
+            color: #d4a017;
+            font-size: 1.2rem;
+        }
+
+        .preco {
             color: #e63946;
             font-weight: 900;
-            font-size: 1.6rem;
+            font-size: 2rem;
             text-shadow: 0 0 6px rgba(230, 57, 70, 0.4);
         }
 
-        .hero-subtitle i {
-            color: #d4a017;
+        /* ===== AVISO DE VERSÃO ===== */
+        .aviso-versao {
+            background: rgba(230, 57, 70, 0.05);
+            border: 1px solid rgba(230, 57, 70, 0.2);
+            border-left: 3px solid #e63946;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 28px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .aviso-versao i {
+            color: #e63946;
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .aviso-versao p {
+            font-size: 0.85rem;
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .aviso-versao p strong {
+            color: #ffffff;
         }
 
         /* ===== BOTÃO ===== */
@@ -150,7 +263,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 15px 36px;
+            padding: 16px 36px;
             background: linear-gradient(145deg, #b8860b, #8b6508);
             color: #ffffff;
             font-size: 1.05rem;
@@ -182,7 +295,7 @@
             transform: translateX(3px);
         }
 
-        /* ===== SEÇÃO DE FUNÇÕES DO MOD (IMAGEM) ===== */
+        /* ===== SEÇÃO DE FUNÇÕES DO MOD (IMAGENS) ===== */
         .funcoes {
             padding: 40px 30px 30px;
             max-width: 900px;
@@ -215,6 +328,12 @@
             background: linear-gradient(90deg, #b8860b, transparent);
             margin-bottom: 24px;
             border-radius: 2px;
+        }
+
+        .funcoes-img-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         .funcoes-img-wrapper {
@@ -275,6 +394,10 @@
             padding-left: 4px;
         }
 
+        .funcoes-detalhes-subtitle strong {
+            color: #e63946;
+        }
+
         .funcoes-detalhes-divider {
             height: 2px;
             background: linear-gradient(90deg, #b8860b, transparent);
@@ -301,6 +424,19 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
         }
 
+        .funcao-card.em-breve {
+            opacity: 0.6;
+            border-left-color: #555;
+        }
+
+        .funcao-card.em-breve:hover {
+            opacity: 0.8;
+            border-color: #555;
+            border-left-color: #555;
+            transform: none;
+            box-shadow: none;
+        }
+
         .funcao-icon {
             flex-shrink: 0;
             width: 52px;
@@ -311,6 +447,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .funcao-card.em-breve .funcao-icon {
+            background: rgba(150, 150, 150, 0.1);
+            border-color: rgba(150, 150, 150, 0.3);
+        }
+
+        .funcao-card.em-breve .funcao-icon i {
+            color: #888;
         }
 
         .funcao-icon i {
@@ -339,6 +484,18 @@
             text-transform: uppercase;
         }
 
+        .funcao-content h3 .badge.disponivel {
+            background: rgba(46, 204, 113, 0.15);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .funcao-content h3 .badge.em-breve-badge {
+            background: rgba(150, 150, 150, 0.15);
+            color: #aaa;
+            border: 1px solid rgba(150, 150, 150, 0.3);
+        }
+
         .funcao-content p {
             font-size: 0.9rem;
             color: #bbb;
@@ -354,7 +511,7 @@
             background: #111111;
             border-top: 1px solid #2a2a2a;
             padding: 20px 30px;
-            text-align: center;
+            text-align: left;
             color: #666;
             font-size: 0.8rem;
         }
@@ -364,7 +521,7 @@
             margin: 0 4px;
         }
 
-        /* ===== BOTÃO FLUTUANTE YOUTUBE (COM PROTEÇÃO ANTI-MARCA D'ÁGUA) ===== */
+        /* ===== BOTÃO FLUTUANTE YOUTUBE ===== */
         .youtube-float {
             position: fixed !important;
             bottom: 25px !important;
@@ -372,13 +529,13 @@
             z-index: 2147483647 !important;
             display: flex !important;
             align-items: center !important;
-            gap: 10px !important;
+            gap: 12px !important;
             background: #ff0000 !important;
             color: #ffffff !important;
             text-decoration: none !important;
-            padding: 12px 20px 12px 16px !important;
+            padding: 16px 28px 16px 22px !important;
             border-radius: 50px !important;
-            font-size: 0.9rem !important;
+            font-size: 1rem !important;
             font-weight: 700 !important;
             box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4),
                         0 0 0 3px rgba(255, 0, 0, 0.1) !important;
@@ -387,7 +544,7 @@
         }
 
         .youtube-float i {
-            font-size: 1.4rem !important;
+            font-size: 1.6rem !important;
         }
 
         .youtube-float:hover {
@@ -411,6 +568,66 @@
                 box-shadow: 0 6px 25px rgba(255, 0, 0, 0.6),
                             0 0 0 8px rgba(255, 0, 0, 0);
             }
+        }
+
+        /* ===== NOTIFICAÇÃO DE COMPRA (TOAST) ===== */
+        .notification-toast {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 2147483646;
+            background: #111111;
+            border: 1px solid #333;
+            border-left: 4px solid #2ecc71;
+            border-radius: 8px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            transform: translateX(-150%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            max-width: 340px;
+        }
+
+        .notification-toast.show {
+            transform: translateX(0);
+        }
+
+        .notification-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .notification-icon i {
+            color: #2ecc71;
+            font-size: 1rem;
+        }
+
+        .notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .notification-title {
+            font-size: 0.7rem;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .notification-text {
+            font-size: 0.85rem;
+            color: #ffffff;
+            font-weight: 600;
         }
 
         /* ===== RESPONSIVO ===== */
@@ -440,18 +657,18 @@
                 font-size: 1.55rem;
             }
 
-            .hero-subtitle {
-                font-size: 1rem;
+            .hero-compatibility, .hero-safe {
+                font-size: 0.85rem;
             }
 
-            .hero-subtitle .preco {
-                font-size: 1.3rem;
+            .preco {
+                font-size: 1.6rem;
             }
 
             .btn-comprar {
                 width: 100%;
                 justify-content: center;
-                padding: 14px 20px;
+                padding: 16px 20px;
                 font-size: 0.95rem;
             }
 
@@ -463,6 +680,10 @@
             .funcoes-header h2,
             .funcoes-detalhes-header h2 {
                 font-size: 1rem;
+            }
+
+            .funcoes-img-grid {
+                grid-template-columns: 1fr;
             }
 
             .funcao-card {
@@ -488,12 +709,20 @@
             .youtube-float {
                 bottom: 18px !important;
                 right: 18px !important;
-                padding: 10px 16px 10px 12px !important;
-                font-size: 0.8rem !important;
+                padding: 14px 24px 14px 18px !important;
+                font-size: 0.9rem !important;
             }
 
             .youtube-float i {
-                font-size: 1.2rem !important;
+                font-size: 1.4rem !important;
+            }
+
+            /* Ajuste da notificação no mobile para não sobrepor o botão do YouTube */
+            .notification-toast {
+                bottom: 90px;
+                left: 18px;
+                right: 18px;
+                max-width: none;
             }
         }
 
@@ -509,6 +738,9 @@
     <!-- CABEÇALHO -->
     <header>
         <div class="header-left">
+            <a href="https://chat.whatsapp.com/CvkURr19Ge82kZ5iRxnWsx" target="_blank" class="header-whatsapp" aria-label="Grupo no WhatsApp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
             <img src="favecom.webp" alt="Favecom" class="header-img">
             <div class="logo">X89<span>MOD</span>PS</div>
         </div>
@@ -527,13 +759,36 @@
 
         <h1>
             Compre já o seu <span class="destaque-vermelho">acesso permanente</span><br>
-            do <span class="destaque-dourado">MOD PS MK GHOST FANTASMA</span>
+            do <span class="destaque-dourado">MOD X89MODPS</span>
         </h1>
 
-        <p class="hero-subtitle">
-            <i class="fa-solid fa-tag"></i>
-            O valor único de <span class="preco">R$ 5</span>
-        </p>
+        <div class="hero-compatibility">
+            <i class="fa-solid fa-mobile-screen"></i>
+            <span>Compatível com Free Fire e Free Fire Max</span>
+            <span class="badge-recomendado">Recomendado: Free Fire Max</span>
+        </div>
+
+        <div class="hero-safe">
+            <i class="fa-solid fa-shield-check"></i>
+            <span>100% Safe até a última atualização</span>
+        </div>
+
+        <div class="hero-subtitle">
+            <span class="preco-antigo">R$ 14,00</span>
+            <span class="desconto-badge">-85% OFF</span>
+            <div class="preco-atual-wrapper">
+                <i class="fa-solid fa-tag"></i>
+                <span class="preco">R$ 2,00</span>
+            </div>
+        </div>
+
+        <!-- AVISO DE VERSÃO -->
+        <div class="aviso-versao">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>
+                <strong>Atenção:</strong> O valor de <strong>R$ 2,00</strong> é um pagamento único referente a <strong>esta versão específica</strong> do aplicativo. Caso o MOD passe por atualizações futuras, a nova versão não está incluída nesta compra. Será necessário adquirir um novo acesso (R$ 2,00) para a versão atualizada.
+            </p>
+        </div>
 
         <a href="carrinho.html" class="btn-comprar">
             <i class="fa-solid fa-cart-shopping"></i>
@@ -542,7 +797,7 @@
         </a>
     </section>
 
-    <!-- FUNÇÕES DO MOD (IMAGEM) -->
+    <!-- FUNÇÕES DO MOD (IMAGENS) -->
     <section class="funcoes">
         <div class="funcoes-header">
             <i class="fa-solid fa-gamepad"></i>
@@ -550,8 +805,13 @@
         </div>
         <div class="funcoes-divider"></div>
 
-        <div class="funcoes-img-wrapper">
-            <img src="fd.png" alt="Funções do MOD" class="funcoes-img">
+        <div class="funcoes-img-grid">
+            <div class="funcoes-img-wrapper">
+                <img src="fd.png" alt="Funções do MOD - Print 1" class="funcoes-img">
+            </div>
+            <div class="funcoes-img-wrapper">
+                <img src="s3.webp" alt="Funções do MOD - Print 2" class="funcoes-img">
+            </div>
         </div>
     </section>
 
@@ -561,53 +821,55 @@
             <i class="fa-solid fa-list-check"></i>
             <h2>Conheça as principais funções</h2>
         </div>
-        <p class="funcoes-detalhes-subtitle">Recursos exclusivos que vão dominar suas partidas</p>
+        <p class="funcoes-detalhes-subtitle">
+            O MOD possui três funções no total, mas <strong>apenas a função de Congelar Inimigo está disponível no momento</strong>.
+        </p>
         <div class="funcoes-detalhes-divider"></div>
 
-        <!-- TELETRANSPORTE -->
-        <div class="funcao-card">
+        <!-- TELETRANSPORTE (EM BREVE) -->
+        <div class="funcao-card em-breve">
             <div class="funcao-icon">
                 <i class="fa-solid fa-location-dot"></i>
             </div>
             <div class="funcao-content">
                 <h3>
                     Teletransporte
-                    <span class="badge">Ativo</span>
+                    <span class="badge em-breve-badge">Em breve</span>
                 </h3>
                 <p>
-                    Ativando a função, uma pessoa consegue <strong>teletransportar para cima de uma casa</strong> ou para <strong>trás de um inimigo</strong>, garantindo vantagem estratégica em qualquer situação.
+                    Ativando a função, uma pessoa consegue teletransportar para cima de uma casa ou para trás de um inimigo, garantindo vantagem estratégica em qualquer situação.
                 </p>
             </div>
         </div>
 
-        <!-- MODO CONGELA -->
+        <!-- MODO CONGELA (DISPONÍVEL) -->
         <div class="funcao-card">
             <div class="funcao-icon">
                 <i class="fa-solid fa-snowflake"></i>
             </div>
             <div class="funcao-content">
                 <h3>
-                    Abater Inimigos
-                    <span class="badge">Modo Congela</span>
+                    Congelar Inimigo
+                    <span class="badge disponivel">Disponível</span>
                 </h3>
                 <p>
-                    Ative o modo e atire no inimigo — ele vai ficar <strong>completamente congelado</strong>. Ao desativar o modo, o inimigo é <strong>abatido automaticamente</strong>.
+                    Ao ativar esta opção, o inimigo é <strong>congelado no lugar</strong>, permitindo que você se posicione estrategicamente para abatê-lo. Ao desativar a opção, o inimigo será <strong>abatido automaticamente</strong>.
                 </p>
             </div>
         </div>
 
-        <!-- MODO GHOST -->
-        <div class="funcao-card">
+        <!-- MODO GHOST (EM BREVE) -->
+        <div class="funcao-card em-breve">
             <div class="funcao-icon">
                 <i class="fa-solid fa-ghost"></i>
             </div>
             <div class="funcao-content">
                 <h3>
                     Modo Ghost Hack
-                    <span class="badge">Invisível</span>
+                    <span class="badge em-breve-badge">Em breve</span>
                 </h3>
                 <p>
-                    Você fica <strong>invisível para amigos e inimigos</strong>. Esconda seu personagem atrás de algum objeto, ative o modo e ataque com visibilidade total — o inimigo <strong>não vai te ver</strong>.
+                    Você fica invisível para amigos e inimigos. Esconda seu personagem atrás de algum objeto, ative o modo e ataque com visibilidade total.
                 </p>
             </div>
         </div>
@@ -621,6 +883,17 @@
         </p>
     </footer>
 
+    <!-- NOTIFICAÇÃO DE COMPRA (TOAST) -->
+    <div class="notification-toast" id="purchaseNotification">
+        <div class="notification-icon">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+        <div class="notification-content">
+            <span class="notification-title">Nova compra realizada!</span>
+            <span class="notification-text" id="notificationText">Usuário 28 acabou de comprar o MOD.</span>
+        </div>
+    </div>
+
     <!-- BOTÃO FLUTUANTE YOUTUBE -->
     <a href="https://www.youtube.com/@x89modps" 
        target="_blank" 
@@ -631,14 +904,46 @@
         <span>@x89modps</span>
     </a>
 
-    <!-- SCRIPT PARA REMOVER MARCAS D'ÁGUA DE HOSPEDAGEM -->
+    <!-- SCRIPTS -->
     <script>
-        // Remove marcas d'água de hospedagem que sobrepõem o botão do YouTube
+        // ===== SISTEMA DE NOTIFICAÇÃO DE COMPRA =====
+        const notifications = [
+            "Usuário 28 acabou de comprar o MOD.",
+            "Usuário 35 acabou de comprar o MOD.",
+            "Usuário 12 acabou de comprar o MOD.",
+            "Usuário 47 acabou de comprar o MOD.",
+            "Usuário 89 acabou de comprar o MOD.",
+            "Usuário 103 acabou de comprar o MOD.",
+            "Usuário 56 acabou de comprar o MOD."
+        ];
+
+        const toast = document.getElementById('purchaseNotification');
+        const textElement = document.getElementById('notificationText');
+        let currentIndex = 0;
+
+        function showNotification() {
+            textElement.textContent = notifications[currentIndex];
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000); // Permanece visível por 4 segundos
+
+            currentIndex = (currentIndex + 1) % notifications.length;
+        }
+
+        // Inicia o loop: primeira notificação após 2.5 segundos, depois a cada 8 segundos
+        setTimeout(() => {
+            showNotification();
+            setInterval(showNotification, 8000);
+        }, 2500);
+
+        // ===== REMOVER MARCAS D'ÁGUA DE HOSPEDAGEM =====
         setInterval(() => {
             document.querySelectorAll('body > div, body > a, body > iframe, body > span').forEach(el => {
-                // Ignora elementos próprios do site
                 if (el.classList.contains('youtube-float') || 
                     el.closest('.youtube-float') ||
+                    el.closest('.notification-toast') ||
                     el.closest('header') ||
                     el.closest('footer') ||
                     el.closest('.hero') ||
@@ -649,7 +954,6 @@
 
                 const style = window.getComputedStyle(el);
                 
-                // Detecta elementos fixos/absolutos com z-index alto (típicos de marca d'água)
                 if ((style.position === 'fixed' || style.position === 'absolute') && 
                     parseInt(style.zIndex) >= 9999) {
                     el.style.zIndex = '1';
